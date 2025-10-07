@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Subscription Service API
+  version: 1.0.0
+paths:
+  /subscriptions:
+    post:
+      summary: Create a new subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+components:
+  schemas:
+    Subscription:
+      type: object
+      properties:
+        userId:
+          type: string
+        planId:
+          type: string
+        status:
+          type: string
+          enum: [active, cancelled, paused]
